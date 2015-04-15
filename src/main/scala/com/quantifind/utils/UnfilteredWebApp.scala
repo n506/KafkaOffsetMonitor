@@ -24,7 +24,7 @@ trait UnfilteredWebApp[T <: Arguments] extends ArgMain[T] {
   override def main(parsed: T) {
     val root = getClass.getResource(htmlRoot)
     println("serving resources from: " + root)
-    unfiltered.jetty.Http(parsed.port)
+    unfiltered.jetty.Http(parsed.port, parsed.host)
       .resources(root) //whatever is not matched by our filter will be served from the resources folder (html, css, ...)
       .filter(setup(parsed))
       .run(_ => afterStart(), _ => afterStop())
@@ -36,6 +36,7 @@ object UnfilteredWebApp {
 
   trait Arguments extends FieldArgs {
     var port = Port.any
+    var host = "127.0.0.1"
   }
 
 }
