@@ -37,15 +37,16 @@ This is a small webapp, you can run it locally or on a server, as long as you ha
 java -cp KafkaOffsetMonitor-assembly-0.2.1.jar \
      com.quantifind.kafka.offsetapp.OffsetGetterWeb \
      --zk zk-server1,zk-server2 \
+     --host 127.0.0.1 \
      --port 8080 \
      --refresh 10.seconds \
-     --retain 2.days \
-     --host 127.0.0.1
+     --retain 2.days
 ```
 
 The arguments are:
 
 - **zk** the ZooKeeper hosts
+- **host** on what address will the app be available
 - **port** on what port will the app be available
 - **refresh** how often should the app refresh and store a point in the DB
 - **retain** how long should points be kept in the DB
