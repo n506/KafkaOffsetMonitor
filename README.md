@@ -39,7 +39,8 @@ java -cp KafkaOffsetMonitor-assembly-0.2.1.jar \
      --zk zk-server1,zk-server2 \
      --port 8080 \
      --refresh 10.seconds \
-     --retain 2.days
+     --retain 2.days \
+     --host 127.0.0.1
 ```
 
 The arguments are:
